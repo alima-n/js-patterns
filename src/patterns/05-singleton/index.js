@@ -1,5 +1,8 @@
 export default class Singleton {
   constructor() {
-    // todo: implement logic
+    if (Singleton.instance) {
+      return Singleton.instance;
+    }
+    Singleton.instance = this;
   }
 }
