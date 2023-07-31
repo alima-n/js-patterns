@@ -4,19 +4,19 @@ export class SuccessNotification {}
 export class ErrorNotification {}
 
 export class SuccessControl {
-  create (type = '') {
-    // todo: implement logic
+  create (type = 'button') {
+    return type === 'button' ? new SuccessButton() : new SuccessNotification()
   }
 }
 
 export class ErrorControl {
-  create (type = '') {
-    // todo: implement logic
+  create (type = 'button') {
+    return type === 'button' ? new ErrorButton() : new ErrorNotification()
   }
 }
 
 export default class ControlsFactory {
-  getFactory (factoryType = '') {
-    // todo: implement logic
+  getFactory (factoryType = 'success') {
+    return factoryType === 'success' ? new SuccessControl() : new ErrorControl()
   }
 }

@@ -1,23 +1,44 @@
 class Input {
   element = {};
 
-  create () {
-    // Abstract method
+  create (type = '') {
+    switch (type) {
+      case 'text':
+        this.element = new TextInput();
+        break;
+      case 'number':
+        this.element = new NumberInput();
+        break;
+      case 'email':
+        this.element = new EmailInput();
+        break;
+    }
+
+    return this.element;
   }
 }
 
 export class TextInput extends Input {
-  // todo: implement logic
+  constructor() {
+    super();
+    this.element.type = 'text';
+  }
 }
 
 export class NumberInput extends Input {
-  // todo: implement logic
+  constructor() {
+    super();
+    this.element.type = 'number';
+  }
 }
 
 export class EmailInput extends Input {
-  // todo: implement logic
+  constructor() {
+    super();
+    this.element.type = 'email';
+  }
 }
 
 export const inputFactory = (type = '') => {
-  // todo: implement logic
+  return new Input().create(type);
 };
